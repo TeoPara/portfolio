@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Touhou</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Touhou Clone</h1>
+    
+    <div style="display: inline-flex">
+        <div>
+            <h3>Snelle video:</h3>
+            <video style="margin-top: -20px" width="450" height="500" controls>
+                <source src="content/touhou.mp4">
+            </video>
+        </div>
+        <div style="margin-left: 50px">
+            <p>
+                Je beweegt rond met je pijltjes toetsen en je gebruikt Z om te schieten. Shift ingedrukt houden laat je langzamer bewegen, en minder uitgespreid schieten<br>
+                Vijanden verschijnen langzamerhand en vliegen willekeurig rond terwijl ze kogels afvuren in cirkelpatronen.<br>
+                Je hebt drie levens. Geraakt worden wist alle vijanden en kogels van het scherm af.<br>
+                <br>
+                Ik ben aan dit project begonnen omdat ik een spel wilde maken zonder een game-engine te gebruiken en om meer te leren over rendering.<br>
+                Ik heb eerder <a href ="https://www.glfw.org/faq.html#11---what-is-glfw" target="_blank" style="target-new: tab;">GLFW</a> geprobeerd, maar ik heb meer ervaring met C# dan met C++, dus ik heb besloten om in
+                plaats daarvan <a href="https://opentk.net/faq.html" target="_blank" style="target-new: tab;">OpenTK</a> te gebruiken.<br>
+                Na het kijken van wat videos op YouTube, en het doorheen lezen van de tutorial op de website, heb ik erin geslaagd om een simpel spel zoals dit te creëren.
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align: center">Code Voorbeeldden</h1>
+    <br><br><br>
+
+    <!-- First code example -->
+    <div style="display: inline-flex">
+        <img style="margin-right: 40px" src="content/2hu2.png">
+        <p style="margin-top: 3px">
+            Dit is de algemene update functie<br>
+            Entity is de base class voor alle enemies, kogels, en de speler.<br>
+            <br>
+            Hier ga ik door alle entities heen, en ga ik door al hun componenten heen.<br>
+            De base class <code>Component</code> is zelf helemaal leeg. Alles wordt door zijn inheritors gedaan;
+            <code>Movement-</code>, <code>Bullet-</code>, <code>Sprite-</code>, & <code>EnemyComponent</code>.<br>
+            Ik check voor alle mogelijke sub-types, en dan call ik de component zijn <code>Update()</code> functie.
+            <br><br>
+            Dit was meer dan een jaar geleden geschreven.<br>
+            Ik erken nu achteraf dat <red>dit slechte code is</red>.<br>
+            Een betere optie zou zijn om een abstracte of virtuele <code>Update()</code> functie in de base class de zetten, en dan de sub-classes het laten overriden.<br>
+            Dan zou ik gewoon dat kunnen callen, en zou ik het kunnen callen ongeacht het sub-type, dus dan zou ik geen hoop if-statements moeten plaatsen.
+        </p>
+    </div>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <!-- Second code example -->
+    <div style="display: inline-flex">
+        <img style="height: 100%" src="content/2hu3.png">
+        <p style="margin-top: 0">
+            Dit is de <code>Update()</code> functie van de <code>BulletComponent</code> component.<br>
+            Het wordt elke frame ge-called vanaf de algemene update functie, en het behandelt de beweging en collision.<br>
+            <br>
+            <br>
+            <pry>Lijn 3</pry> - Dit is de beweging. <code>Base</code> is de <code>Entity</code> waar deze component op zit.<br>
+            <br>
+            <pry>Lijn 5</pry> - Ik loop door een lijst van alle entities heen. Ik voeg hier <code>.ToList()</code> toe aan het einde om de "Collection was modified; enumeration operation may not execute" exception te voorkomen.
+            Het is niet toegestaan om lijsten te bewerken terwijl je door ze loopt met foreach, en omdat entities zichzelf van de lijst weghalen wanneer ze vernietigd worden, zou dat die error geven.<br>
+            <br>
+            <pry>Lijn 7</pry> - Negeer andere bullets, en deze bullet zelf ook.<br>
+            <br>
+            <pry>Lijn 10 & 11</pry> - Ik probeer een <code>HealthComponent</code> te vinden, en als die entity er geen heeft, negeer ik het.<br>
+            <br>
+            <pry>Lijn 14</pry> - Ik negeer de entity die deze kogel heeft afgevuurd, zodat je niet gelijk jezelf raakt wanneer je schiet.<br>
+            <br>
+            <pry>Lijn 16</pry> - Ik check of de eigenaar van deze kogel en de target allebei een enemy zijn, zodat er geen friendly fire is tussen enemies.<br>
+            <br>
+            <pry>Lijn 19</pry> - Tot slot, check ik of de kogel dichtbij genoeg is, en als dat zo is, laat ik het damage doen en zichzelf vernietigen.<br>
+            <br><br>
+            <red>Problemen & mogelijke optimisations</red>:<br>
+            Op <pry>Lijn 10</pry> loop ik door de target zijn lijst van componenten heen.<br>
+            Dat kost meer dan de andere checks die ik doe, dus ik zou de andere checks als eerst moeten gedaan, in het geval dat ze slagen, en pas dan deze hebben gedaan.<br>
+            Dit telt ook voor <pry>Lijn 7</pry>.<br>
+            <br>
+            Al deze checks worden apart ge-runned door elke kogel, elke frame. In plaats daarvan, zou ik deze maar een keer kunnen doen, wanneer die nodig zijn.<br>
+            Ik zou een aparte lijst van entities kunnen hebben, degene entities die gekwalificeerd zijn als hit-targets.
+            En als ik weet dat entities geen components kunnen krijgen of verliezen nadat ze ge-spawned zijn, dan weet ik dat ik maar een keer voor een HealthComponent hoef te checken.<br>
+            <br>
+            Bij <pry>Lijn 16</pry> vergelijk ik strings, maar het vergelijken van enums zou meer performant zijn.<br>
+            Ik zou ook in plaats daarvan aparte sub-classes aan kunnen maken, zodat er een distinctie is tussen de speler en de enemies, en dan die classes vergelijken.
+        </p>
+    </div>
+   
+
+
+</article>
+
+</body>
+</html>

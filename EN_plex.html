@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <div style="align-content: center">
+        <img src="content/PlexTitle.png" style="margin-left: 25%">
+        <img src="content/plex.png" style="height: 200px; margin-left: 100px">
+    </div>
+    <h3>Introduction</h3>
+    
+    <p>
+        This is a Unity project that I've started with a few classmates.<br>
+        At first we weren't sure of what we wanted to make yet. 
+        We just knew that we wanted to make it a 2D game, 
+        since we all had experience with drawing 2D sprites, 
+        and programming on a 2D plane is easier. And I then suggested that it be a multiplayer game, 
+        because I like making multiplayer games.
+        We ended up with the idea of making a clone of Stickfight. 
+        That's a fast-paced PvP game where you run around on platforms and try using various items
+        that spawn around the place to win the round.<br>
+        And that seemed fun.
+    </p>
+    
+    <h3 style="margin-bottom: -10px;">Game Description</h3>
+    <p>
+        The game has a main menu, where you can choose to either Host a game or Join an existing game.
+        Once the Host starts the game, a randomly selected map is loaded in, and
+        every player gets a random color, this way they can keep track of which character is theirs on the screen.
+    </p>
+    
+    
+    <h4>Controls & Abilities</h4>
+    <p>
+        - <red>WASD</red> to move around and jump<br>
+        - <red>E</red> to pickup an item<br>
+        - <red>Q</red> to drop your item<br>
+        - <red>M1</red> to use your item<br>
+        - <red>F</red> to melee attack. This can be done while holding something<br>
+        - <red>Spacebar</red> to dash in the direction you're moving<br>
+        - <red>Hold S</red> while falling to groundslam, anyone you hit with it will drop their item<br>
+        - You can jump next to walls to climb them<br>
+    </p>
+    
+    <h4>Items</h4>
+    <p>
+        - Grenade<br>
+        - Mine<br>
+        <grey>*after you deploy the mine, a few seconds pass until it's armed</grey> <br>
+        - Shotgun<br>
+        - Sniper<br>
+        - Auto Rifle<br>
+        - HP Potion<br>
+        - Machete<br>
+    </p>
+    
+    <h4>Breakable platforms</h4>
+    <p>
+        The small platforms that don't have grass on them can be gradually broken if they're shot at.<br>
+        Once they're fully broken they fall apart into rubble- the rubble particles have physics
+        and can be interacted with for a couple of seconds before they disappear.<br>
+        So when you're standing on the platform, and it's broken, you can save yourself by jumping off of it's rubble.
+    </p>
+    <img src="content/CrumblingPlatform.gif">
+    
+    
+    <h3> </h3>
+    <h1 style="text-align: center">Technical Section</h1>
+
+    <h3 style="text-align: center">Movement Input</h3>
+    <hr>
+    
+    <p></p>
+    
+    <p>Let's say you're playing a game, and you're moving to the left, holding the A key. You now want to move to the right, so you release the A key and press the D key.<br><br>
+        - Situation A: You simultaneously release and press both keys at the same time, and you seamlessly transition from the one movement direction to the other. Good job!<br>
+        <i><grey>Assuming that you're playing at more than zero frames per second, this is highly unlikely.</grey></i><br><br>
+        - Situation B: You release the A key, and you try to press the D key as soon as you can, but you're a couple of frames late. Now you're sitting there, waiting out those
+        precious milliseconds as you're watching your character stand still. How infuriating. The worse is yet to come, though...<br><br>
+        - Situation C: You mess up, and you manage to press the D key <u><i>BEFORE</i></u> releasing the A key. Now this can have catastrophic consequences; depending on how the game is
+        coded, there's a chance that when both of the movement keys are pressed, you arbitrarily move in some predetermined, hard-coded movement direction, and if that direction happens to be
+        <i>left</i>, you'll be going backwards! But, if you ARE lucky, that direction will happen to be <i>right</i>, and then you'll be fine... <i>Sigh...</i> But! If the developer of the game
+        you're playing decided that you'll be standing still if both keys are pressed, then you just found yourself in the same predicament as in situation B.. so..
+        <br>
+        <br>
+        <u>Conclusion:</u><br> There are tons of situations in which you're being forced to waste your own time! Every time you decide to switch which direction you're moving in!<br>
+        I see this in almost EVERY game I ever play! So.... here's my solution:<br>
+        Instead of just checking what movement keys are currently being held, I also check at exactly what time they were pressed!<br>
+        If I prioritize the movement keys based on which one was pressed LAST
+        , I resolve the situations listed above, preventing unnecessary, massive, time-wasting.<br>
+        <img src="content/plexMovement.gif"><br>
+        That's it!
+    </p>
+    <hr>
+    <br>
+    <br>
+    <h3 style="text-align: center">Multiplayer</h3>
+    <hr>
+    <h4>How did I implement multiplayer?</h4>
+    <p>
+        In order to get multiplayer functionality I used <i>Mirror Networking</i> - the open-source Unity networking library.
+        Doing networking can get pretty hard at times - it adds a whole 'nother dimension that you have to keep in mind.
+        But it's fun.<br>
+        Whenever a player (client) does something, he sends a "Command". A Command is a function that can be called from a client to be executed on the server.
+        The server receives inputs this way, such as item interaction, ability usage, etc. The server then sends a "ClientRPC" to the clients. That's a function that's called from the server,
+        to be executed on all clients.
+        
+        I don't have any measures against cheating, and I don't keep track of information to update late-joining players. So a player that joins 6 rounds later than the rest will be de-synced.
+    </p>
+</article>
+
+</body>
+</html>

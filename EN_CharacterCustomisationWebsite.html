@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Character Customisation Website</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Character Customisation Website</h1>
+    
+   
+    <p>
+        I was given the task of creating a website where users can create an account, log into it, create a character, and customise it.<br>
+        The end-goal is to allow this website to be an interface for the in-game
+        characters.
+    </p>
+
+    <br><br><br>
+    <h1 style="text-align: center">Overview</h1>
+    
+    <div style="display: inline-flex">
+        <div>
+            <p style="margin-bottom: 0">Account creation</p>
+            <img src="CCW1.gif">
+        </div>
+        <p style="margin-left: 10px;">
+            <br>
+            This menu lets you create an account.<br>
+            When you're logged in, you can create a new character.<br>
+            It's owned by you and only you can then edit that character.
+        </p>    
+    </div>
+    
+    <br><br>
+    
+    <div style="display: inline-flex">
+        <div>
+            <p style="margin-bottom: 0">Account database</p>
+            <img src="CCW3.gif">
+        </div>
+        <p style="margin-left: 10px">
+            <br>
+            Accounts are saved into a MongoDB database.<br>
+            The <code>owned</code> field is for tracking which of the characters this user has created.<br>
+            Rather than storing the password as clear text, I use MD5 algorithm to hash the passwords client-side, before they're sent.<br>
+            This prevents anyone other than the user finding out the original text.
+        </p>
+    </div>
+
+    <br><br>
+
+    <div style="display: inline-flex">
+        <div>
+            <p style="margin-bottom: 0">Character customisation</p>
+            <img src="CCW2.gif" style="width: 500px">        
+        </div>
+        <p style="margin-left: 10px">
+            <br>
+            This is the character customizer itself.<br>
+            <br>
+            You can:<br>
+            - set the name of the character<br>
+            - toggle whether he's wearing the pants & chest-plate<br>
+            - change the color of his skin, pants, & chest-plate<br>
+            <br>
+            After making your changes, you can send them to the server by pressing 'Update'<br>
+            This requires you to be logged-in to the account that owns the character<br>
+            <br>
+            After you update a character, all of the connected users have their page forcefully refresh- this causes a re-connect, and the re-connect prompts a re-send of all of the character information,
+            updating the character for all users<br>
+            <br>
+            The number on the top right is the character's index, this is the thing used to keep track of ownership
+            
+        </p>
+    </div>
+
+</article>
+
+</body>
+</html>

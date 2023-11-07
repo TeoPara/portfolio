@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Touhou</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Touhou Clone</h1>
+    
+    <div style="display: inline-flex">
+        <div>
+            <h3>Quick video:</h3>
+            <video style="margin-top: -20px" width="450" height="500" controls>
+                <source src="content/touhou.mp4">
+            </video>
+        </div>
+        <div style="margin-left: 50px">
+            <p>
+                You move around with arrow keys, and you use Z to shoot. Holding down Shift lets you move more slowly, and shoot more narrowly.<br>
+                Enemies spawn gradually and randomly fly around while shooting circles of bullets.<br>
+                You have three lives. Getting hit clears all enemies and bullets off the screen.<br>
+                <br>
+                I started this project because I wanted to create a game without a game engine and to learn about rendering.<br>
+                I've tried <a href ="https://www.glfw.org/faq.html#11---what-is-glfw" target="_blank" style="target-new: tab;">GLFW</a> before, but I have more experience with C# than with C++, so I decided to use
+                <a href="https://opentk.net/faq.html" target="_blank" style="target-new: tab;">OpenTK</a> instead.<br>
+                After watching some videos on Youtube, and reading through the tutorial on the website, I managed to create a simple game like this.
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align: center">Code Examples</h1>
+    <br><br><br>
+    
+    <!-- First code example -->
+    <div style="display: inline-flex">
+        <img style="margin-right: 40px" src="content/2hu2.png">
+        <p style="margin-top: 3px">
+            This is the main update function.<br>
+            Entity is the base class for all of the enemies, bullets, and the player.<br>
+            <br>
+            Here I go through all of the entities, and then go through all of their components.<br>
+            The base class <code>Component</code> itself is completely empty. Everything is up to it's derivative classes;
+            <code>Movement-</code>, <code>Bullet-</code>, <code>Sprite-</code>, & <code>EnemyComponent</code>.<br>
+            I check for all of the possible component sub-types, and then call the component's <code>Update()</code> function.
+            <br><br>
+            This was written more than a year ago.<br>
+            I recognise now, in hindsight, that <red>this is poor code</red>.<br>
+            A better option would've been to create an abstract or virtual <code>Update()</code> function in the base class, and have the sub-classes override it.<br>
+            Then, I could simply call that instead, and I could call it regardless of the sub-type, so I wouldn't have to put a bunch of if-statemements.
+        </p>
+    </div>
+    
+    <br><br><br>
+    <hr>
+    <br><br><br>
+    
+    <!-- Second code example -->
+    <div style="display: inline-flex">
+        <img style="height: 100%" src="content/2hu3.png">
+        <p style="margin-top: 0">
+            This is the <code>Update()</code> function of the <code>BulletComponent</code> component.<br>
+            It's called every frame from the main update function, and it handles movement and collision.<br>
+            <br>
+            <br>
+            <pry>Line 3</pry> - This is the movement. <code>Base</code> is the <code>Entity</code> that this component resides on.<br>
+            <br>
+            <pry>Line 5</pry> - I loop through a list of all entities. I add <code>.ToList()</code> at the end here to prevent the "Collection was modified; enumeration operation may not execute" exception.
+            You're not allowed to modify lists that are being looped through with foreach, and since entities remove themselves from the list upon being destroyed, that would throw the error.<br>
+            <br>
+            <pry>Line 7</pry> - Ignore other bullets, and this bullet itself.<br>
+            <br>
+            <pry>Line 10 & 11</pry> - I attempt to find a <code>HealthComponent</code>, and if that entity doesn't have one, I ignore it.<br>
+            <br>
+            <pry>Line 14</pry> - I ignore the entity that fired the bullet, so you don't immediately hit yourself when you shoot.<br>
+            <br>
+            <pry>Line 16</pry> - I check if both the owner of this bullet and the target are an enemy, so that there's no friendly fire between enemies.<br>
+            <br>
+            <pry>Line 19</pry> - Finally, I check if the bullet's close enough, and if it is, make it deal damage and destroy itself.<br>
+            <br><br>
+            <red>Issues & possible optimisations</red>:<br>
+            At <pry>Line 10</pry> I look through the target's list of components.<br>
+            This is more expensive than the other checks I do, so I should've done the other checks first, in case they pass, and only then do this one.<br>
+            This also applies to <pry>Line 7</pry>.<br>
+            <br>
+            All of these checks are ran separately by each bullet, every frame. Instead, I could do these only once when they're necessary.<br>
+            I could have a separate list of entities, those qualified to be hit-targets.
+            And if I know that entities cannot gain or lose components after being spawned, then I know I only have to check for a HealthComponent once.<br>
+            <br>
+            At <pry>Line 16</pry> I compare strings, but comparing enums would be more performant.<br>
+            I could also create seperate sub-classes to create a distinction between the player and the enemies, and compare those instead.
+        </p>
+    </div>
+    
+
+
+</article>
+
+</body>
+</html>

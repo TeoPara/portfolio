@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Tea Majesty</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Introductie</h1>
+    <p>
+        Dit is het resultaat van een gamejam die ik deed samen met 2 andere mensen.
+        Ik heb alle code geschreven, terwijl mijn teammates de art hebben getekend, de levels hebben ge-designed, en de muziek hebben gecomponeerd.<br>
+        De tijd limiet voor de gamejam was 5 uur!<br><br>
+        Hier is wat ik gemaakt heb:
+    </p>
+    <div style="display: inline-flex">
+        <div>
+            <video style="margin-top: -20px" width="640" height="400" controls>
+                <source src="content/TM_vid.mp4">
+            </video>
+        </div>
+        <div style="margin-left: 15px; margin-top: -20px">
+            <p>
+                Dit is een tile-based puzzel spel.
+                <br><br>
+                Je moet je weg vinden door een doolhof gevuld met obstakels, terwijl je onderweg ingrediënten verzamelt voor een heerlijke kopje tee.
+                Maar de tee is niet voor jou. Je moet het aan de Koningin bezorgen, wat jouw einddoel is.
+                <br><br>
+                Alhoewel! Tijdens jouw passeren van een obstakel, valt het om,
+                en dan zal je niet meer langskomen. Dus you moet strategisch inzien welke pad je zult nemen om te voorkomen vast te lopen, of een cruciale ingredient te missen!
+                De ingredienten/stappen naar de voltooiing van je tee zijn als volgt:<br> 
+                - Haal de lege beker<br>
+                - Haal het kokend water<br>
+                - Haal de tee<br>
+                - En als laatst.. haal wat melk. Want wie doet er nou geen melk in zijn tee?
+                <br><br>
+                <u style="font-weight: lighter">Controls</u><br>
+                De controls zijn heel simpel, je gebruikt gewoon WASD of pijltjes toetsen om rond te bewegen, en je drukt op E om een ingredient van een dichtbijgelegen tafel op te pakken.
+                <br><br>
+                <u style="font-weight: lighter">Tile-based beweging</u><br>
+                Wanneer je een bewegingstoets indrukt, zal je continu in die richting doorgaan totdat je het middenpunt van de volgende tile bereikt, je kan niet mid-tile stoppen, of tussenin twee tiles staan.
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align: center">Code Voorbeelden</h1>
+
+
+
+    <h3>"Attempt Pickup" functie</h3><hr>
+    <div style="display: flex">
+        <div>
+            <img src="content/TM_CE_1.png">
+        </div>
+        <div style="margin-left: 25px">
+            <p>
+                Deze functie wordt ge-called wanneer de speler op E drukt, om een dichtbijgelegen item proberen op te pakken.<br><br>
+                
+                <pry>Lijn 5</pry> - Ik maak een array met 4 offsets vanaf de speler zijn positie- een tile ten noorden, oosten, zuiden, en westen vanaf de speler.<br>Dat zijn de 4 plekken waar een item zich kan bevinden.
+                <br><br>
+                <pry>Lijn 11</pry> - Teneinde dingen te doen met tilemaps moet je omzetten naar hun cell space.<br>
+                <img src="content/TM_CE_1_0.png"> < dit is de tilemap die alle doelen bevat (de kop, water, tee, & melk).
+                <br><br>
+                <pry>Lijn 14 & 15</pry> - Hier verkrijg ik de naam van het item die opgepakt word, zet ik het om naar een enum, en zet ik die enum als de waarde van een property.<br>
+                Wat <code>Prog</code> en <code>Progress</code> zijn en wat ze doen wordt behandeld in de volgende code voorbeeld.
+                <br><br>
+            </p>
+        </div>
+    </div>
+    
+    
+    </article>
+
+</body>
+</html>

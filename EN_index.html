@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <title>Teo's portfolio</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body style="background-image: url('test.jpg')">
+
+<img src="EN_Flag.png" onclick="location.href='NL_index.html'" style="position: absolute; margin-top: -13px" width="64px" height="48px">
+
+<h1 style="text-align: center"><spry>Teo</spry></h1>
+<h1 style="text-align: center"><gwigjw style="font-weight: lighter"><spry>Game Developer Unity</spry></gwigjw></h1>
+<div style="text-align: center">
+    <a href ="cv.pdf" target="_blank" style="target-new: tab;">View CV</a>
+</div>
+
+<!-- INTRODUCTION -->
+<div>
+    <!--<h1 style="text-align: center">About Me</h1>-->
+    <h3>Introduction</h3>
+    <p>
+        Hello, my name is <heheh style="font-size: 18px">Teo</heheh>, from The Netherlands<br>
+        I'm a 3rd year student at the Mediacollege Amsterdam, following the <heheh style="font-size: 18px;">Software Development</heheh> course.<br>
+        <br>
+        I'm looking for an internship at a company where I can focus on working towards technical aspects of games with in not-too-large team.<br>
+        There I'd like to have the freedom- or a say- in what I get to work on, based on what I'm best at.<br>
+        <br>
+        My interest lies mainly in game-dev, but I do video editing and pixel-art too, even some music.<br>
+        I just like creating things.<br><br>
+        And I'm mainly interested in creating large multiplayer games, but I also just do whatever small projects that seem fun.<br>They don't even have to be games, just various tools and things like that.
+        <br>
+        <br>
+        Even before I started my education, was I a hobbyist game-dev exploring the realm of possibilities.<br>
+        Here's how I got into programming:<br>
+        <button id="showmorebtn" onclick="document.getElementById('showmore').style.display = ''; document.getElementById('showmorebtn').style.display = 'none';">show more..</button>
+    </p>
+    <div id="showmore" style="display: none">
+        <hr>
+        <h3>Preliminary interest<comm style="font-weight: lighter"> //- games that introduced me to the concept of programming</comm></h3>
+        <p>
+            The first game I've ever played must've been <sblue>Little Big Planet</sblue>... on the PS3, when I was around 4 years old.<br>
+            I'm sure that if that game weren't a SANDBOX game, that I would be less likely to be where I am today.<br>
+            That platformer game is a bastion of creativity, it allows you to create a lot crazy shit! It has a <sred>"circuit" system</sred>- you can add various
+            components like logical gates or math operators or sensors onto things, and then wire things together to create mechanics in your levels. This is the most important
+            part of the sandbox experience. And you could <i>technically</i> call it programming, in the more broader definition of the word. It's <sred>like visual scripting</sred>.<br>
+            <br>
+            The next important game that I came across is called <sblue>Manyland</sblue>. It's a 2D tile-based sandbox roleplay browser game where everything consists of pixel-art drawn by the players.
+            You can create a world and fill it with either other people's things or stuff you've created yourself. But the important part is that the game also has <sred>it's own programming language</sred> that allows you
+            to create interactive objects, game mechanics, systems. So you can create a world where you've got a ping-pong game, or a working chess board, etc, and have other players play it with you.<br>
+            I have spent a LOT of time in this game, just coding stuff with it's custom language. But I've also spent a good amount of time doing pixel-art! <comm>//(which quite paid off down the line)</comm>
+        </p>
+        <hr>
+        <h3>My first <i>real</i> programming experience</h3>
+        <p>
+            ..But this changed when I found an open-source game called <sblue>Barotrauma</sblue> in 2019.
+            I learned <sred>C#</sred> by looking through that codebase and changing random things around until I figured out what they did and how they worked.
+            Normally the game is co-op where the players play as humans on a submarine. They go and explore and they'll occasionally encounter some AI monsters in the water
+            on the outside outside and fight them.
+            What I've done instead is that the submarine is frozen in place so there's no exploration, and 50% of the players get randomly chosen to play as a monster instead.
+            So it's an entirely PvP focused mode with players as humans vs players as monsters.
+        </p>
+    </div>
+    <br><br>
+</div>
+
+<!-- PROJECTS -->
+<h1 style="text-align: center">My Projects</h1>
+<div class="project-listing">
+    
+    <!-- Plex -->
+    <div>
+        <header>
+            <h3>Plex</h3>
+            <img width="100%" src="content/plex.gif">
+            <p>A multiplayer PvP game like stick-fight</p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('EN_plex.html')">Read more...</button>
+            <button onclick="window.open('https://github.com/TeoPara/Plex', '_blank')">Github Repo</button>
+            <img src="csTag.png" title="C#">
+            <img src="unityTag.png" title="Unity">
+        </footer>
+    </div>
+    
+    <!-- TeaMajesty -->
+    <div>
+        <header>
+            <h3>TeaMajesty</h3>
+            <img width="100%" src="content/TeaMajestyThumbnail.png">
+            <p>A simple puzzle game</p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('EN_TeaMajesty.html')">Read more...</button>
+            <button onclick="window.open('https://github.com/TeoPara/TeaMajesty', '_blank')">Github Repo</button>
+            <img src="csTag.png" title="C#">
+            <img src="unityTag.png" title="Unity">
+        </footer>
+    </div>
+
+    
+    <!-- Starfall Character Customisation Website -->
+    <div>
+        <header>
+            <h3>Character Customisation</h3>
+            <img width="100%" src="content/thumbnail_CCW.png">
+            <p>A website using <img style="height: 18px" src="content/MongoDB_Fores-Green.svg.png">, <img style="height: 22px" src="content/120px-Node.js_logo.svg.png">, and <code>Socket.io</code></p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('EN_CharacterCustomisationWebsite.html')">Read more...</button>
+            <button onclick="window.open('https://github.com/TeoPara/CharacterCustomisationWebsite', '_blank')">Github Repo</button>
+            <img src="jsTag.png" title="JavaScript">
+        </footer>
+    </div>
+
+    <!-- Touhou game -->
+    <div>
+        <header>
+            <h3>Touhou Game</h3>
+            <img width="100%" src="content/touhou1.png">
+            <p style="margin-top: -5px">A bullet hell game. Created w/ OpenTK library, no engine.</p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('EN_Touhou.html')">Read more...</button>
+            <button onclick="window.open('https://github.com/TeoPara/TouhouGame', '_blank')">Github Repo</button>
+            <img src="csTag.png" title="C#">
+            <img src="opentkTag.png" title="OpenTK">
+        </footer>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<br><br><br><br><br><br>
+<footer>
+    <h1 style="text-align: center">Contact Me</h1>
+    <ul style="color: white">
+        <li><p>E-Mail: t.paraszkiewicz@gmail.com</p></li>
+        <li><p>Discord: dierolz</p></li>
+    </ul>
+</footer>
+
+<!-- PROJECT VIEW IFRAME -->
+<iframe
+        id="preview" src="" style="pointer-events: none; border:none; position:fixed; left:2.5%; right:2.5%; bottom: 5%"
+        height="800" width=95%>
+</iframe>
+<!-- Hides the project preview when you click outside of it -->
+<script>
+    const specifiedElement = document.getElementById('preview');
+    document.addEventListener('click', function(event)
+    {
+        let failed = false;
+        Array.prototype.forEach.call(
+            document.getElementsByClassName("ignoreOutClick"), ((e)=>{
+            if (e.contains(event.target)) {
+                failed = true;
+            }
+        }));
+        
+        if (failed)
+            return;
+        if (!specifiedElement.contains(event.target))
+            setSrc('');
+    });
+</script>
+
+
+</body>
+</html>

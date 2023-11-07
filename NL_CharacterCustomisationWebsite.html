@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Character Customisation Website</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Character Customisation Website</h1>
+    
+    <p>
+        Ik heb de taak gekregen om een website te maken waar gebruikers een account kunnen aanmaken, in kunnen loggen, en dan een karakter kunnen aanmaken om die aan te passen.<br>
+        Het einddoel is om deze website een interface te laten zijn voor de in-game karakters.
+    </p>
+
+    <br><br><br>
+    <h1 style="text-align: center">Overzicht</h1>
+    
+    <div style="display: inline-flex">
+        <div>
+            <p style="margin-bottom: 0">Account aanmaking</p>
+            <img src="CCW1.gif">
+        </div>
+        <p style="margin-left: 10px;">
+            <br>
+            Dit menu laat je een account aanmaken<br>
+            Mits je ingelogd bent, kan je een nieuw karakter aanmaken.<br>
+            Het is jouw eigendom en alleen jij kunt het karakter bewerken.
+        </p>    
+    </div>
+    
+    <br><br>
+    
+    <div style="display: inline-flex">
+        <div>
+            <p style="margin-bottom: 0">Account database</p>
+            <img src="CCW3.gif">
+        </div>
+        <p style="margin-left: 10px">
+            <br>
+            Accounts worden opgeslagen in een MongoDB database.<br>
+            De <code>owned</code> gedeelte is voor het in rekening houden welke van de karakters deze gebruiken heeft gecreëerd.<br>
+            In plaats van het wachtwoord als cleartext op te slaan, gebruik ik de MD5 algoritme om de wachtwoorden aan de client-side te hashen, voordat ze gestuurd worden.<br>
+            Dit voorkomt dat iemand behalve de gebruiken zelf de originele wachtwoord uit kan vinden.
+        </p>
+    </div>
+
+    <br><br>
+
+    <div style="display: inline-flex">
+        <div>
+            <p style="margin-bottom: 0">Karakter bewerking</p>
+            <img src="CCW2.gif" style="width: 500px">        
+        </div>
+        <p style="margin-left: 10px">
+            <br>
+            Dit is de karakter-bewerking paneel zelf.<br>
+            <br>
+            Je kan:<br>
+            - de naam van het karakter instellen<br>
+            - aanpassen of hij zijn broek & zijn borst-plaat draagt<br>
+            - de kleur van zijn broek, borst-plaat, en zijn huid veranderen<br>
+            <br>
+            Nadat je je aanpassingen hebt gemaakt, kan je die naar de server sturen door op 'Update' te drukken.<br>
+            Dit eist dat je in ge-logged bent op de account die bezitting heeft over het karakter<br>
+            <br>
+            Wanneer je je aanpassingen hebt ge-update, wordt de pagina van alle verbonden gebruikers gedwongen ge-refreshed- dit zorgt voor een re-connect, en de re-connect verzoekt een her-sturing
+            val alle karakter informatie, wat het karakter update voor de andere gebruikers<br>
+            <br>
+            Het getal rechtsboven is het karakters zijn index, dit is het ding wat gebruikt wordt om rekening te houden met eigenaarschap
+            
+        </p>
+    </div>
+
+</article>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Tea Majesty</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Introduction</h1>
+    <p>
+        This is the result of a gamejam I did along with 2 other people.
+        I wrote all of the code, while my teammates drew the art, designed the levels, and composed the music. <br>
+        The time limit for the gamejam was 5 hours! <br><br>
+        Here's what I've made:
+    </p>
+    <div style="display: inline-flex">
+        <div>
+            <video style="margin-top: -20px" width="640" height="400" controls>
+                <source src="content/TM_vid.mp4">
+            </video>
+        </div>
+        <div style="margin-left: 15px; margin-top: -20px">
+            <p>
+                This a tile-based puzzle game.
+                <br><br>
+                You have to navigate your way around a maze filled with obstacles, grabbing ingredients for a delicious cup of tea along the way.
+                The tea isn't for you, though. You have to deliver it to the Queen, which is your end goal.
+                <br><br>
+                Howwwwever! As you pass through an obstacle, it falls over,
+                and then you shall not pass again. So you've got to strategically envision which path you'll take so as not to get stuck, or miss out on a crucial ingredient!
+                The ingredients/steps towards the completion of your tea are as follows:<br>
+                - Get the empty cup<br>
+                - Get the boiling water<br>
+                - Get the tea<br>
+                - And finally.. get some milk. Because who doesn't put milk into their tea
+                <br><br>
+                <u style="font-weight: lighter">Controls</u><br>
+                The controls are very simple, you just use WASD or arrow keys to move around, and you press E to pick-up an ingredient from a nearby table.
+                <br><br>
+                <u style="font-weight: lighter">Tile-based movement</u><br>
+                Once you press a movement key, you'll continue walking in that direction until you reach the middle of the next tile, you cannot stop moving mid-tile, or stand between two tiles.
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align: center">Code Examples</h1>
+
+
+
+    <h3>"Attempt Pickup" function</h3><hr>
+    <div style="display: flex">
+        <div>
+            <img src="content/TM_CE_1.png">
+        </div>
+        <div style="margin-left: 25px">
+            <p>
+                This function is called whenever the player presses E, to attempt to pick up a nearby item.<br><br>
+                <pry>Line 5</pry> - I create an array with 4 offsets from the players position- one tile north, east, south and west of the player.<br>These are the 4 places an item may lie at.
+                <br><br>
+                <pry>Line 11</pry> - In order to do things with tilemaps you have to convert to their cell space.<br>
+                <img src="content/TM_CE_1_0.png"> < this is the tilemap that contains all of the objectives (the cup, water, tea, & milk).
+                <br><br>
+                <pry>Line 14 & 15</pry> - Here I get the name of the item being picked up, convert it to an enum, and set that enum as the value of a property.<br>
+                What <code>Prog</code> and <code>Progress</code> are and what they do is covered in the next code example.
+                <br><br>
+            </p>
+        </div>
+    </div>
+    
+    
+    </article>
+
+</body>
+</html>

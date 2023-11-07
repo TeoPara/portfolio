@@ -1,0 +1,183 @@
+<img id="AA" style="pointer-events: none; position: fixed; margin-top: -25%; margin-left: -25%" src="blur.png" width="1000%" height="1000%">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <title>Teo's portfolio</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body style="background-image: url('test.jpg')">
+
+
+
+<img src="NL_Flag.png" onclick="location.href='EN_index.html'" style="position: absolute; margin-top: -13px" width="64px" height="48px">
+
+<h1 style="text-align: center"><spry>Teo</spry></h1>
+<h1 style="text-align: center"><gwigjw style="font-weight: lighter"><spry>Game Developer Unity</spry></gwigjw></h1>
+<div style="text-align: center">
+    <a href ="cv.pdf" target="_blank" style="target-new: tab;">Zie CV</a>
+</div>
+
+
+
+
+<!-- INTRODUCTION -->
+<div>
+    <!--<h1 style="text-align: center">About Me</h1>-->
+    <h3>Introductie</h3>
+    <p>
+        Hallo, mijn naam is <heheh style="font-size: 18px">Teo</heheh>, uit Nederland<br>
+        Ik ben 3e-jaars student van Mediacollege Amsterdam en volg de opleiding <heheh style="font-size: 18px;">Software Development</heheh>.<br>
+        <br>
+        Ik ben op zoek naar een stageplek waar ik met een niet te grote team gericht aan technische aspecten van spellen kan werken.<br>
+        Daar wil ik de vrijheid hebben om te kiezen, of een stem te hebben in- waar ik aan werk, gebaseerd op waar ik het best in ben.<br>
+        <br>
+        Mijn interesse ligt voornamelijk bij game-dev, maar ik doe ook aan video editing en pixel-art too, en zelfs wat digitale muziek.<br>
+        Ik vind het gewoon leuk om dingen te creëren.<br>
+        <br>
+        En ik ben vooral geïnteresseerd in het maken van grote multiplayer games, maar ik maak ook gewoon kleine projecten die me leuk maken.<br>
+        Het hoeven niet eens games te zijn, gewoon verschillende tools en dat soort dingen.
+        <br>
+        <br>
+        Nog voordat ik aan mijn opleiding begon, was ik een hobbyistische game-dev, die de mogelijkheden aan het verkennen was.<br>
+        Zo ben ik aan programmeren begonnen:<br>
+        <button id="showmorebtn" onclick="document.getElementById('showmore').style.display = ''; document.getElementById('showmorebtn').style.display = 'none';">meer tonen..</button>
+    </p>
+    <div id="showmore" style="display: none">
+        <hr>
+        <h3>Preliminaire interesse<comm style="font-weight: lighter"> //- games die me het concept van programmeren bijbrachten</comm></h3>
+        <p>
+            Het eerste spel dat ik ooit heb gespeeld moet <sblue>Little Big Planet</sblue> zijn geweest... op de PS3, toen ik ongeveer 4 jaar oud was.<br>
+            Ik weet zeker dat als die game geen SANDBOX game was geweest, ik veel minder kans had gehad om te zijn waar ik nu ben.<br>
+            Die platformer game is een bastion van creativiteit, je kunt er een heleboel coole dingen mee maken! Het heeft een<sred>"circuit" systeem</sred>- je kunt verschillende
+            componenten zoals logische poorten of reken-operatoren of sensoren aan dingen toevoegen, en dan dingen met elkaar verbinden om mechanica in je levels te creëren. Dit is het belangrijkste
+            deel van de sandbox ervaring. En je zou het <i>technisch gezien</i> programmeren kunnen noemen, in de bredere definitie van het woord. Het is <sred>net zoals visual scripting</sred>.<br>
+            <br>
+            De eerstvolgende impactvolle game dat ik tegenkwam heet <sblue>Manyland</sblue>. Het is een tile-based 2D sandbox browser game waarin alles bestaat uit pixel-art die door de spelers is getekend.
+            Je kunt een wereld maken en die vullen met dingen van anderen of dingen die je zelf hebt gemaakt. Maar het belangrijkste is dat de game ook <sred>zijn eigen programmeertaal</sred> heeft die jou toestaat
+            om interactieve objecten, game mechanics, en systemen te creëren. Je kunt dus een wereld creëren waarin je een pingpongspel hebt, of een werkend schaakbord, enzovoort, en andere spelers met je laten spelen.<br>
+            Ik heb veel tijd in deze game gestoken, gewoon dingen aan het coderen met de game zijn eigen taal. Maar ik heb ook veel tijd besteed aan pixel-art! <comm>//(wat later zijn vruchten afwierp)</comm>
+        </p>
+        <hr>
+        <h3>Mijn eerste <i>echte</i> programmeer ervaring</h3>
+        <p>
+            ...Maar dit veranderde toen ik in 2019 een open-source spel vond genaamd <sblue>Barotrauma</sblue>.
+            Ik leerde <sred>C#</sred> door die codebase te kijken en willekeurige dingen rond te veranderen totdat ik uitvogelde wat ze deden en hoe ze werkten.
+            Gewoonlijk is de game een co-op waar de spelers als mensen op een onderzeeër spelen. Ze gaan op verkenning uit en komen af en toe wat AI monsters tegen in het water
+            buiten en bevechten hun.
+            Wat ik in plaats daarvan heb gedaan is dat de onderzeeër beweegloos is en dus er geen verkenning is, en 50% van de spelers willekeurig worden gekozen om te spelen als een monster in plaats van een mens.
+            Het is dus een volledig op PvP gerichte gamemode met spelers als mensen tegen andere spelers als monsters.
+        </p>
+    </div>
+    <br><br>
+</div>
+
+<!-- PROJECTS -->
+<h1 style="text-align: center">Mijn Projecten</h1>
+<div class="project-listing">
+    
+    <!-- Plex -->
+    <div>
+        <header>
+            <h3>Plex</h3>
+            <img width="100%" src="content/plex.gif">
+            <p>Een multiplayer PvP spel net zoals stick-fight</p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('NL_plex.html')">Lees meer...</button>
+            <button onclick="window.open('https://github.com/TeoPara/Plex', '_blank')">Github Repo</button>
+            <img src="csTag.png" title="C#">
+            <img src="unityTag.png" title="Unity">
+        </footer>
+    </div>
+    
+    <!-- TeaMajesty -->
+    <div>
+        <header>
+            <h3>TeaMajesty</h3>
+            <img width="100%" src="content/TeaMajestyThumbnail.png">
+            <p>Een simpele puzzel spel</p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('NL_TeaMajesty.html')">Lees meer...</button>
+            <button onclick="window.open('https://github.com/TeoPara/TeaMajesty', '_blank')">Github Repo</button>
+            <img src="csTag.png" title="C#">
+            <img src="unityTag.png" title="Unity">
+        </footer>
+    </div>
+
+    
+    <!-- Starfall Character Customisation Website -->
+    <div>
+        <header>
+            <h3>Character Customisation</h3>
+            <img width="100%" src="content/thumbnail_CCW.png">
+            <p>Een website gebruikend <img style="height: 18px" src="content/MongoDB_Fores-Green.svg.png">, <img style="height: 22px" src="content/120px-Node.js_logo.svg.png">, en <code>Socket.io</code></p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('NL_CharacterCustomisationWebsite.html')">Lees meer...</button>
+            <button onclick="window.open('https://github.com/TeoPara/CharacterCustomisationWebsite', '_blank')">Github Repo</button>
+            <img src="jsTag.png" title="JavaScript">
+        </footer>
+    </div>
+
+    <!-- Touhou game -->
+    <div>
+        <header>
+            <h3>Touhou Game</h3>
+            <img width="100%" src="content/touhou1.png">
+            <p style="margin-top: -10px; font-size: 15px;">Een bullet-hell spel. Gemaakt met de OpenTK library, geen engine.</p>
+        </header>
+        <footer>
+            <button class="ignoreOutClick" onclick="setSrc('NL_Touhou.html')">Lees meer...</button>
+            <button onclick="window.open('https://github.com/TeoPara/TouhouGame', '_blank')">Github Repo</button>
+            <img src="csTag.png" title="C#">
+            <img src="opentkTag.png" title="OpenTK">
+        </footer>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<br><br><br><br><br><br>
+<footer>
+    <h1 style="text-align: center">Contact Opnemen</h1>
+    <ul style="color: white">
+        <li><p>E-Mail: t.paraszkiewicz@gmail.com</p></li>
+        <li><p>Discord: dierolz</p></li>
+    </ul>
+</footer>
+
+<!-- PROJECT VIEW IFRAME -->
+<iframe 
+        id="preview" src="" style="pointer-events: none; border:none; position:fixed; left:2.5%; right:2.5%; bottom: 5%;
+        box-shadow: 0px 0px 5px 5px #96a275"
+        height="800" width=95%>
+</iframe>
+<!-- Hides the project preview when you click outside of it -->
+<script>
+    const specifiedElement = document.getElementById('preview');
+    document.addEventListener('click', function(event)
+    {
+        let failed = false;
+        Array.prototype.forEach.call(
+            document.getElementsByClassName("ignoreOutClick"), ((e)=>{
+            if (e.contains(event.target)) {
+                failed = true;
+            }
+        }));
+        
+        if (failed)
+            return;
+        if (!specifiedElement.contains(event.target))
+            setSrc('');
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <div style="align-content: center">
+        <img src="content/PlexTitle.png" style="margin-left: 25%">
+        <img src="content/plex.png" style="height: 200px; margin-left: 100px">
+    </div>
+    <h3>Introductie</h3>
+    
+    <p>
+        Dit is een Unity project die ik heb begonnen met een aantal klasgenoten.<br>
+        Eerst wisten we niet zeker wat we wouden maken. 
+        We wisten gewoon dat we een 2D spel wouden, want we hadden allemaal ervaring met het tekenen van 2D sprites, en het programmeren in 2 dimensies makkelijker is.
+        En toen heb ik gesuggereerd om het een multiplayer spel te maken, want ik vind het leuk om multiplayer spellen te maken.
+        We kwamen uit op het idee om een clone van Stickfight te maken.
+        Dat is een fast-paced PvP spel waar je rondrent op platformen en probeert verschillende items te gebruiken die rond-spawnen om de round te winnen.<br>
+        En dat leek leuk.
+    </p>
+    
+    <h3 style="margin-bottom: -10px;">Spel Omschrijving</h3>
+    <p>
+        Het spel heeft een main menu, waar je kan kiezen om een spel te Hosten, of een bestaand spel te Joinen.
+        Zodra de Host het spel start, wordt een willekeurig geselecteerde map in-geladen, en krijgt iedere speler een willekeurige kleur.
+        Op deze manier kunnen ze bijhouden welk karakter op het scherm van hun is.
+    </p>
+    
+    
+    <h4>Controls & Abilities</h4>
+    <p>
+        - <red>WASD</red> om rond te bewegen en te springen<br>
+        - <red>E</red> om een item op te pakken<br>
+        - <red>Q</red> om een item te laten vallen<br>
+        - <red>M1</red> om je item te gebruiken<br>
+        - <red>F</red> om een melee aanval te doen. Dit kan gedaan worden terwijl je iets vast hebt<br>
+        - <red>Spacebar</red> om in de richting waar je naartoe beweegt te dashen<br>
+        - <red>Hold S</red> terwijl je aan het fallen bent om een groundslam te doen, wie je daarmee raakt zal zijn item droppen<br>
+        - Je kan springen naast muren om ze te beklimmen<br>
+    </p>
+    
+    <h4>Items</h4>
+    <p>
+        - Granaat<br>
+        - Landmijn<br>
+        <grey>*nadat je de landmijn plaatst, duurt het een aantal seconden voordat het actief is</grey> <br>
+        - Shotgun<br>
+        - Sniper<br>
+        - Automatisch Geweer<br>
+        - HP Drankje<br>
+        - Machete<br>
+    </p>
+    
+    <h4>Breekbare platformen</h4>
+    <p>
+        De kleine platformen die geen grass hebben kunnen geleidelijk gebroken worden als ze geschoten worden.<br>
+        Zodra ze volledig gebroken zijn vallen ze uiteen in puin- de puinstukjes hebben physics
+        en kunnen geïnteracteerd mee worden voor een aantal seconden voordat ze verdwijnen.<br>
+        Dus wanneer je op het platform aan het staan bent, en het wordt gebroken, kun je jezelf redden door van zijn puin af te springen.
+    </p>
+    <img src="content/CrumblingPlatform.gif">
+    
+    
+    <h3> </h3>
+    <h1 style="text-align: center">Technische Gedeelte</h1>
+
+    <h3 style="text-align: center">Movement Input</h3>
+    <hr>
+    
+    <p></p>
+    
+    
+     
+    <p>Laten we zeggen dat je een spel aan het spelen bent, en je bent naar links aan het bewegen, met de A toets ingedrukt. Nu wil je naar rechts bewegen, en dus lat je de A toets los en druk je op de D toets.<br>
+        <br>
+        - Geval A: Je laat een toets los en drukt de andere in tegelijkertijd, en je gaat naadloos over van de ene bewegingsrichting naar de ander. Goed gedaan!<br>
+        <i><grey>Ervan uitgaande dat je speelt met meer dan nul frames per seconde, is dit hoogst onwaarschijnlijk.</grey></i><br><br>
+        - Geval B: Je laat de A toets los, en je probeert zo snel mogelijk de D toets proberen in te drukken, maar je bent een aantal frames te laat. Nu zit je daar, wachtend op die
+        kostbare milliseconden terwijl je toekijkt hoe je karakter stilstaat. Hoe woedend. Maar het ergste moet nog komen...<br><br>
+        - Geval C: Je verknoeit het, en je slaagt erin om op de D toets te drukken<u><i>VOORDAT</i></u> je de A toets hebt losgelaten. Nou kan dit catastrofale gevolgen hebben; afhankelijk van hoe het spel
+        is gecodeerd, is er een kans dat wanneer beide van de bewegingstoetsen ingedrukt zijn, je beweegt in een of andere arbitraire, voor-besloten, ge-hard-coded bewegingsrichting,
+        en als die richting toevallig <i>links</i> blijkt te zijn, zou je achteruitgaan! Maar als je WEL wat geluk hebt, zal die richting <i>rechts</i> blijken te zijn, en dan zou alles in orde zijn...
+        <i>Zucht...</i> Maar! Als de developer van de spel die je aan het spelen bent besloten heeft dat je stil zal staan mits beide toetsen ingedrukt zijn, dan heb je jezelf in dezelfde situatie bevonden als
+        in geval B.. dus..
+        <br>
+        <br>
+        <u>Conclusie:</u><br> Er zijn een heleboel gevallen waarin je wordt geforceerd je eigen tijd te verspillen! Elke keerd dat je beslist te veranderen van bewegingsrichting!<br>
+        Ik zie dit in bijna ELKE spel die ik ooit speel! Dus... hier is mijn oplossing:<br>
+        In plaats van alleen checken welke bewegingstoetsen op het huidig moment ingedrukt zijn, check ik ook op welke tijdstip ze precies ingedrukt waren!<br>
+        Als ik prioriteit geef aan de bewegingstoetsen gebaseerd op welke van de toetsen als LAATST ingedrukt was, los ik de boven omschreven gevallen op, en voorkom ik onnodige, massieve, tijd-verspilling.<br>
+        <img src="content/plexMovement.gif"><br>
+        Dat is alles.
+    </p>
+    <hr>
+    <br>
+    <br>
+    <h3 style="text-align: center">Multiplayer</h3>
+    <hr>
+    <h4>Hoe heb ik multiplayer geïmplementeerd</h4>
+    <p>
+        Om multiplayer functionaliteit te krijgen heb ik gebruik gemaakt van <i>Mirror Networking</i> - de open-source Unity networking library.
+        Networking doen is op sommige momenten best lastig - het voegt een hele nieuwe dimensie toe waar je rekening mee moet houden.
+        Maar het is leuk.<br>
+        Telkens wanneer een speler (client) iets doet, stuurt hij een "Command". Een Command is een functie die ge-called kan worden vanaf een client om ge-execute te worden op de server.
+        De server krijgt op deze manier inputs, zoals item interactie, ability gebruik, etc. De server stuurt dan een "ClientRPC" naar de clients. Dat is een functie die ge-called word vanaf de server,
+        om ge-execute te worden op alle clients.
+        
+        Ik heb geen enkele maatregelen tegen cheating, en ik houd geen informatie bij om late-gejoinde spelers te updaten. Dus een speler die 6 rondes later dan de rest joined zal mogelijk ge de-synced zijn.
+    </p>
+</article>
+
+</body>
+</html>
