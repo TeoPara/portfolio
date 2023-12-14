@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teo's portfolio - Project: Maze Generator</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body style="background-color: #1f1f1b">
+
+<article>
+    <h1 style="text-align: center">Maze Generator</h1>
+    
+    <div style="display: inline-flex">
+        <div>
+            <h3>Quick video:</h3>
+            <video style="margin-top: -20px" width="800" height="500" controls>
+                <source src="content/mazeOverview.mp4">
+            </video>
+        </div>
+        <div style="margin-left: 50px">
+            <p>
+                Creates a perfect maze. A perfect maze is a maze with only one solution, with no loops or closed circuits, and no inaccessible areas.<br>
+                The generator uses randomized depth-first search methodology:<br>
+                - get adjacent nodes as movement options<br>
+                - filter out the movemnet options that are invalid (either already visited or out of bounds)<br>
+                - select one randomly to move to<br>
+                - otherwise, if there aren't any movemnet options remaining, backtrace<br>
+                - if there isn't anything to backtrace to, finish
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align: center">Code Examples</h1>
+    <br><br><br>
+    
+    <!-- First code example -->
+    <div style="display: inline-flex">
+        <img style="margin-right: 40px; margin-left: 5px; width: 624px; height:133px" src="content/mazeCode0.png">
+        <p style="margin-top: 3px">
+            This is the rectangular node subclass of the node class.<br>
+            The bool values in the two arrays represent all of the sides of the node.<br>
+            With hexagonal nodes, you have 6 sides. With rectangular nodes, 4.<br>
+            <br>
+            <code>Openings</code> is used to store which sides are open/closed and used to determine the proper sprite to draw.<br>
+            <code>Went</code> is used to keep track of which sides the path has gone through during generation.<br>
+            <code>Position</code> is this node's position on the map.
+        </p>
+    </div>
+    
+    <br><br><br>
+    <hr>
+    <br><br><br>
+    
+    <!-- Second code example -->
+    <div style="display: inline-flex">
+        <img style="height: 100%; margin-right: 10px;" src="content/mazeCode.png">
+        <p style="margin-top: 0">
+            This function is used to determine which tile to render. It takes in the bool array of openings that a node has, and converts it into the filename format that the <code>TileBase</code> s are in. The
+            Resources.Load function is used together with the return of this function in order to load the correct tile. The naming scheme of the tiles looks like this: "-X--", "X-X-", "XXXX", "---X", etc.<br>
+            <br>
+            <pry>Line 3</pry> - I create an array of '-' characters. The length of the array depends on whether it's a hexagonal node or not.<br>
+            <br>
+            <pry>Line 5</pry> - I loop from 0 through the arrays length<br>
+            <pry>Line 6</pry> - If the bool array has a value of false at the same position,<br>
+            <pry>Line 7</pry> - set the character at that position to 'X'<br>
+            <br>
+            <pry>Line 9</pry> - Return the result, after converting the character array to a string.<br>
+            <br>
+            <red>Note: </red><sred>Instead of using the <code>hex</code> parameter to set the <code>for</code> loop's limit, at line 5, I could've just used <code>dirs</code>' length.</sred>
+        </p>
+    </div>
+    
+
+
+</article>
+
+</body>
+</html>
