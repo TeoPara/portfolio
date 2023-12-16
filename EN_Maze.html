@@ -58,8 +58,8 @@
     <div style="display: inline-flex">
         <img style="height: 100%; margin-right: 10px;" src="content/mazeCode.png">
         <p style="margin-top: 0">
-            This function is used to determine which tile to render. It takes in the bool array of openings that a node has, and converts it into the filename format that the <code>TileBase</code> s are in. The
-            Resources.Load function is used together with the return of this function in order to load the correct tile. The naming scheme of the tiles looks like this: "-X--", "X-X-", "XXXX", "---X", etc.<br>
+            This function is used to determine which tile to render. It takes in the bool array of openings that a node has, and converts it into the filename format that the <code>TileBase</code> s are in.
+            <code>Resources.Load<>()</code> is used together with the return value of this function in order to select the correct tile. The naming scheme of the tiles looks like this: "-X--", "X-X-", "XXXX", "---X", etc.<br>
             <br>
             <pry>Line 3</pry> - I create an array of '-' characters. The length of the array depends on whether it's a hexagonal node or not.<br>
             <br>
@@ -72,8 +72,57 @@
             <red>Note: </red><sred>Instead of using the <code>hex</code> parameter to set the <code>for</code> loop's limit, at line 5, I could've just used <code>dirs</code>' length.</sred>
         </p>
     </div>
-    
 
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <!-- Third code example -->
+    <div style="display: inline-flex">
+        <img style="height: 100%; margin-right: 10px;" src="content/mazeCode1.png">
+        <p style="margin-top: 0">
+            I'll go over the code structure surrounding the main run function.<br>
+            <br>
+            Here you can see a class, <code>RunInterface</code>, which contains two <code>Action</code> delegates: <code>Cancel</code> and <code>AdjustWaitTime</code>.<br>
+            These are meant in order to retroactively manipulate the maze generator as it's busy doing its work before it's actually finished.<br>
+            This is possible because the maze generator runs on a coroutine with a delay after each step, rather than doing so instantaneously.<br>
+            <br>
+            Next up, there's the <code>RunParams</code> struct. This is used as a container for any possible inputs I may want to pass onto the generator, which makes things more manageable.<br>
+            Creating a separate place to group a category of your parameters into also brings a good amount of clarity — if your function signature looks like an unreadable mess otherwise.
+        </p>
+    </div>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <!-- Fourth code example -->
+    <div style="display: inline-flex">
+        <img style="height: 100%; margin-right: 10px;" src="content/mazeCode2.png">
+        <p style="margin-top: 0">
+            Now for the actual run function itself;<br>
+            <br>
+            <pry>Line 1</pry> - The maze generator's logic works inside of a coroutine.<br>
+            I use this variable, <code>startedRunCoroutine</code>, to keep a reference to that coroutine, so that I may stop it at any time.<br>
+            <br>
+            <pry>Line 3</pry> - This function takes three arguments, namely;<br>
+            <br>
+            &nbsp&nbsp&nbsp- <code>RunParams runParams</code>: described in the previous section.<br>
+            &nbsp&nbsp&nbsp- <code>bool hex</code>: this is whether you're generating a hexagonal maze or not.<br>
+            <aaaa style="display: inline-flex">
+                <aaa>&nbsp&nbsp&nbsp-&nbsp;</aaa>
+                <aaa><code>Action completionCallback</code>: as the name implies, this delegate is provided by the caller so that it may be invoked when the maze generation process finishes,
+                so that the caller may do something upon that event. It's null by default so as not to have to specify an empty delegate every time you want to use this but don't want anything to happen afterwards.</aaa>
+            </aaaa><br>
+            <br>
+            And it returns a <code>RunInterface</code> - which is explained in the previous section.<br>
+            <br>
+            <pry>Line 5 & 6</pry> - To prevent weird stuff from happening, I make sure only one mazegen is currently active. There's also a preventative measure in the settings class, where this function is used, but
+            I left this check in for good measure,
+            <br><br>
+            <red>[ Work in progress... ]</red>
+        </p>
+    </div>
 
 </article>
 
