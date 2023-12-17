@@ -12,7 +12,7 @@
     
     <div style="display: inline-flex">
         <div>
-            <h3>Quick video:</h3>
+            <h3>Overview video:</h3>
             <video style="margin-top: -20px" width="800" height="500" controls>
                 <source src="content/mazeOverview.mp4">
             </video>
@@ -53,10 +53,27 @@
     <br><br><br>
     <hr>
     <br><br><br>
+
+    <!-- First and a half code example -->
+    <div style="display: inline-flex">
+        <img style="margin-right: 40px; margin-left: 5px; width: 648px; height:302px" src="content/mazeCode3.png">
+        <p style="margin-top: 3px">
+            This creates a 2D array of the <code>Node</code> class.<br>
+            <br>
+            <pry>Line 6 & 7</pry> - As opposed to the <code>Array.Length</code> property, the <code>Array.GetLength()</code> method can be used with multidimensional arrays.<br>
+            These two for loops cover the entire span of the array..<br>
+            <pry>Line 8</pry> - ..and a Node is created at every position. The type of Node depends on the <code>hex</code> parameter.
+        
+        </p>
+    </div>
+    
+    <br><br><br>
+    <hr>
+    <br><br><br>
     
     <!-- Second code example -->
     <div style="display: inline-flex">
-        <img style="height: 100%; margin-right: 10px;" src="content/mazeCode.png">
+        <img style="height: 100%; margin-right: 40px;" src="content/mazeCode.png">
         <p style="margin-top: 0">
             This function is used to determine which tile to render. It takes in the bool array of openings that a node has, and converts it into the filename format that the <code>TileBase</code> s are in.
             <code>Resources.Load<>()</code> is used together with the return value of this function in order to select the correct tile. The naming scheme of the tiles looks like this: "-X--", "X-X-", "XXXX", "---X", etc.<br>
@@ -79,7 +96,7 @@
 
     <!-- Third code example -->
     <div style="display: inline-flex">
-        <img style="height: 100%; margin-right: 10px;" src="content/mazeCode1.png">
+        <img style="height: 100%; margin-right: 40px;" src="content/mazeCode1.png">
         <p style="margin-top: 0">
             I'll go over the code structure surrounding the main run function.<br>
             <br>
@@ -98,7 +115,7 @@
 
     <!-- Fourth code example -->
     <div style="display: inline-flex">
-        <img style="height: 100%; margin-right: 10px;" src="content/mazeCode2.png">
+        <img style="height: 100%; margin-right: 40px;" src="content/mazeCode2.png">
         <p style="margin-top: 0">
             Now for the actual run function itself;<br>
             <br>
@@ -117,13 +134,19 @@
             <br>
             And it returns a <code>RunInterface</code> - which is explained in the previous section.<br>
             <br>
-            <pry>Line 5 & 6</pry> - To prevent weird stuff from happening, I make sure only one mazegen is currently active. There's also a preventative measure in the settings class, where this function is used, but
-            I left this check in for good measure,
-            <br><br>
-            <red>[ Work in progress... ]</red>
+            <pry>Line 5 & 6</pry> - To prevent weird stuff from happening, I make sure only one coroutine is currently active.<br>
+            <br>
+            <pry>Line 9</pry> - The amount of seconds the coroutine waits for after every step. Its value gets adjusted by a delegate.<br>
+            <br>
+            <pry>Line 11</pry> - Start the coroutine and assign it as the value for the variable from earlier.<br>
+            <br>
+            <pry>Line 14-32</pry> - Create a new <code>RunInterface</code> and return it, after defining the delegates.<br>
+            <br>
+            <pry>Line 34</pry> - The actual coroutine with the maze generation. I've nested it in here because it's not used anywhere else, and shouldn't be.<br>
         </p>
     </div>
 
+    
 </article>
 
 </body>
